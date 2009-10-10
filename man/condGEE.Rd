@@ -57,6 +57,10 @@ condGEE(data, start, mu.fn=MU, mu.d=MU.d, var.fn=V,
   \item{a.var }{an estimate of the asymptotic variance matrix of the eta estimator
   }
 }
+\examples{
+  data(asthma)
+  demo(asthmaExample)
+}
 \author{
   David Clement <dyc24@cornell.edu>
 }

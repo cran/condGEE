@@ -11,7 +11,7 @@ asth <- NULL
 while(k <= n.subjects) 
 {
   n <- asthma$nn[i]         #number of gaps for subject k
-  inds <- i:(i+n-1)       #indices of subject k's gaps 
+  inds <- i:(i+n-1)         #indices of subject k's gaps 
   gaps <- asthma$stop.w[inds] - asthma$start.w[inds]
 
   if(n > 1)
