@@ -37,9 +37,9 @@ condGEE <- function(data, start, mu.fn=MU, mu.d=MU.d, var.fn=V, k1=K1.norm, k2=K
 
  GEE.mean <- function(theta)
  {
-  mu <- mu.fn(theta,data[,4:(4+n.covs-1)])
-  var <- var.fn(theta,data[,4:(4+n.covs-1)])        
-  d.mu <- mu.d(theta,data[,4:(4+n.covs-1)])
+  mu <- mu.fn(theta,matrix(data[,4:(4+n.covs-1)],ncol=n.covs))
+  var <- var.fn(theta,matrix(data[,4:(4+n.covs-1)],ncol=n.covs))
+  d.mu <- mu.d(theta,matrix(data[,4:(4+n.covs-1)],ncol=n.covs))
   std.gaps <- as.numeric((data[,2]-mu)/sqrt(sig2*var))
 
   cens <- which(data[,3]==0)
@@ -52,8 +52,8 @@ condGEE <- function(data, start, mu.fn=MU, mu.d=MU.d, var.fn=V, k1=K1.norm, k2=K
 
  GEE.var <- function(sig2)
  {
-  mu <- mu.fn(theta,data[,4:(4+n.covs-1)])
-  var <- var.fn(theta,data[,4:(4+n.covs-1)]) 
+  mu <- mu.fn(theta,matrix(data[,4:(4+n.covs-1)],ncol=n.covs))
+  var <- var.fn(theta,matrix(data[,4:(4+n.covs-1)],ncol=n.covs)) 
   std.gaps <- as.numeric((data[,2]-mu)/sqrt(sig2*var))
   std.gaps2 <- std.gaps^2
 
@@ -70,9 +70,9 @@ condGEE <- function(data, start, mu.fn=MU, mu.d=MU.d, var.fn=V, k1=K1.norm, k2=K
   theta <- eta[1:(p-1)]
   sig2 <- eta[p]
 
-  mu <- mu.fn(theta,data[,4:(4+n.covs-1)])
-  var <- var.fn(theta,data[,4:(4+n.covs-1)])
-  d.mu <- mu.d(theta,data[,4:(4+n.covs-1)]) 
+  mu <- mu.fn(theta,matrix(data[,4:(4+n.covs-1)],ncol=n.covs))
+  var <- var.fn(theta,matrix(data[,4:(4+n.covs-1)],ncol=n.covs))
+  d.mu <- mu.d(theta,matrix(data[,4:(4+n.covs-1)],ncol=n.covs)) 
   std.gaps <- as.numeric((data[,2]-mu)/sqrt(sig2*var))
   std.gaps2 <- std.gaps^2
 
@@ -99,9 +99,9 @@ condGEE <- function(data, start, mu.fn=MU, mu.d=MU.d, var.fn=V, k1=K1.norm, k2=K
     ind <- (start.index:stop.index)
     len <- length(ind)
 
-    mu <- mu.fn(theta,data[ind,4:(4+n.covs-1)])
-    var <- var.fn(theta,data[ind,4:(4+n.covs-1)])        
-    d.mu <- mu.d(theta,data[ind,4:(4+n.covs-1)])
+    mu <- mu.fn(theta,matrix(data[ind,4:(4+n.covs-1)],ncol=n.covs))
+    var <- var.fn(theta,matrix(data[ind,4:(4+n.covs-1)],ncol=n.covs))        
+    d.mu <- mu.d(theta,matrix(data[ind,4:(4+n.covs-1)],ncol=n.covs))
    
     std.gaps <- as.numeric((data[ind,2]-mu)/sqrt(sig2*var))
     std.gaps2 <- std.gaps^2
@@ -154,9 +154,3 @@ condGEE <- function(data, start, mu.fn=MU, mu.d=MU.d, var.fn=V, k1=K1.norm, k2=K
 
  return(list(eta=eta, a.var=a.var))
 }
-
-
-
-
-
-
