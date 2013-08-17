@@ -1,6 +1,6 @@
 
-library(rootSolve)      #multiroot
-library(numDeriv)       #jacobian
+#library(rootSolve)      #multiroot
+#library(numDeriv)       #jacobian
 
 #######################
 #

@@ -1,11 +1,10 @@
-# Default NAMESPACE created by R
-# Remove the previous line if you edit this file
+importFrom(numDeriv, jacobian)
+importFrom(rootSolve, multiroot)
 
-# Export all names
-exportPattern(".")
-
-# Import all packages listed as Imports or Depends
-import(
-  numDeriv,
-  rootSolve
-)
+export(condGEE)
+export(K1.norm)
+export(K2.norm)
+export(K1.t3)
+export(K2.t3)
+export(K1.exp)
+export(K2.exp)
