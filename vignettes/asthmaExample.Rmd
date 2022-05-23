@@ -1,12 +1,27 @@
+---
+title: "Using Asthma Data with condGEE"
+author: "David Clement"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Asthma Data}
+  %\VignetteEngine{knitr::rmarkdown}
+
+---
+  
+  
+```{r body}
 # data is available from: http://www.blackwellpublishing.com/rss/Volumes/Cv52p3.htm
 # it was previously used by Duchateau et al. JRSSC volume 52 (2003), part 3, pages 355-363
 
+library(condGEE)
+data(asthma)
 n.subjects <- length(unique(asthma$id.w))
 
 med.nar <- 4       #median time not at risk before current gap     
 med.rec <- 40      #median length of at risk period
 
-i <- 1 ; k <- 1
+i <- 1
+k <- 1
 asth <- NULL
 while(k <= n.subjects) 
 {
@@ -35,5 +50,6 @@ while(k <= n.subjects)
 #the results look at little different than Clement and Strawderman (2009) because our code
 #has been updated. Qualitatively nothing has changed though.
 
-start <-  c(4.4, 0.4, -1, 0.3, 0.8, -0.5, -0.3, -0.5, 3)
-condGEE(asth,start,k1=K1.t3,k2=K2.t3)
+start <- c(4.4, 0.4, -1, 0.3, 0.8, -0.5, -0.3, -0.5, 3)
+condGEE(asth, start, k1 = K1.t3, k2 = K2.t3)
+```
